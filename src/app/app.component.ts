@@ -6,25 +6,24 @@ import { Observable } from 'rxjs';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  constructor(private TDLS : TodolistService) {
-  }
+  constructor(private TDLS: TodolistService) {}
 
-  get obsTodolist() : Observable<TodoList> {
+  get obsTodolist(): Observable<TodoList> {
     return this.TDLS.observable;
   }
 
-  ajouter(texte : string) : void {
+  ajouter(texte: string): void {
     this.TDLS.ajouter(texte);
   }
 
-  updateItem(item : TodoItem, maj : Partial<TodoItem>) : void {
+  updateItem(item: TodoItem, maj: Partial<TodoItem>): void {
     this.TDLS.update(maj, item);
   }
 
-  delete(item : TodoItem) : void {
+  delete(item: TodoItem): void {
     this.TDLS.remove(item);
   }
 }
